@@ -30,3 +30,18 @@ jobs:
         with:
           name: security-check-output
           path: output.txt
+      - id: results
+        run: |
+          OUTPUT=$(cat output.txt)
+          FORMATTED=${OUTPUT//$'\n'/%0A}
+          echo ::set-output name=file::**Django Security Check identified issues:** %0A$FORMATTED
+      - name: Comment with output
+        uses: actions/github-script@v3
+        with:
+          script: |
+            github.issues.createComment({
+              issue_number: ${{ github.event.number }},
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `${{ steps.results.outputs.file }}`
+            })          
