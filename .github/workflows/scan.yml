@@ -9,8 +9,8 @@ env:
   SECRET_KEY: ${{ secrets.SECRET_KEY }}
   FAIL_LEVEL: WARNING
   ENV_TYPE: venv
-  DEP_PATH: app/requirements.txt
-  APP_PATH: app/
+  DEP_PATH: pygoat/requirements.txt
+  APP_PATH: pygoat/
   EXTRA_ARGS: "--settings=app.settings.production"
 
 jobs:
