@@ -11,7 +11,6 @@ env:
   ENV_TYPE: venv
   DEP_PATH: pygoat/requirements.txt
   APP_PATH: pygoat/
-  EXTRA_ARGS: "--settings=app.settings.production"
 
 jobs:
   build:
